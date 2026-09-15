@@ -2,11 +2,7 @@
 
 A custom WordPress theme built with Sage (Roots), Tailwind CSS, and Vite, implementing a Figma design for a luxury villa rental.
 
-## 📸 Screenshots
 
-![Hero Section](screenshot.png)
-
-*Hero section with background image, headline, and CTA buttons.*
 
 ## ✨ Features
 
