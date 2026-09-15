@@ -13,7 +13,7 @@
                 📍 13 km od Beograda
             </p>
             <h1 class="text-white text-4xl md:text-6xl lg:text-7xl font-bold leading-tight font-manrope">
-                Vaš privatni SPA beg<br>iz grada.
+                Vaš privatni SPA beg<br>iz grada
             </h1>
         </div>
 
