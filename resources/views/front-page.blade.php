@@ -2,5 +2,5 @@
 
 @section('content')
   @include('sections.hero')
-
+  @include('sections.amenities') 
 @endsection
