@@ -1,6 +1,6 @@
 <section class="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
     {{-- Background image --}}
-    <img src="@asset('images/hero-vila.webp')" alt="Lipovačka Oaza" class="absolute inset-0 w-full h-full object-cover z-0" />
+    <img src="@asset('resources/images/hero-vila.webp')" alt="Lipovačka Oaza" class="absolute inset-0 w-full h-full object-cover z-0" />
     {{-- Gradient overlay for text readability --}}
     <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/90 z-10"></div>
 
