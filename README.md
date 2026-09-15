@@ -12,6 +12,7 @@ A custom WordPress theme built with Sage (Roots), Tailwind CSS, and Vite, implem
 - **Custom header** with scroll-based animation (transparent to solid)
 - **Hero section** with gradient overlay and responsive text
 - **Figma to code** workflow: design implemented from a Figma template
+- **ACF (Advanced Custom Fields)** — editable content sections so clients can update titles/text without touching code
 
 ## 🛠️ Tech Stack
 
