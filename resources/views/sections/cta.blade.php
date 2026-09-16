@@ -1,34 +1,48 @@
-{{-- CTA section: centered call-to-action with arrow --}}
+{{-- CTA section: contact with background image --}}
 <section class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-6">
-    
-    {{-- Card wrapper with cream background --}}
-    <div class="bg-[#F5F0E8] rounded-[20px] border border-black/10 px-6 py-16 md:py-20 text-center">
-      
-      {{-- Main headline --}}
-      <h2 class="text-[#4F7052] text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight font-manrope max-w-3xl mx-auto mb-6">
-        Dizajnirana oko trenutaka<br>koje ćete pamtiti.
-      </h2>
 
-      {{-- Description --}}
-      <p class="text-[#727971] text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-        Svaki detalj Lipovačke Oaze pažljivo je osmišljen da vam pruži savršen spoj prirode, komfora i privatnosti. Otkrijte prostore stvorene za opuštanje i beg od svakodnevice.
-      </p>
+    <div class="relative rounded-[20px] overflow-hidden min-h-[474px] flex items-center justify-center">
 
-      {{-- Arrow button --}}
-      <a href="#booking" 
-         class="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-[#4F6F52] hover:bg-[#3d5a40] rounded-full transition-all duration-300 hover:scale-105 group"
-         aria-label="Istraži vilu">
-        <svg class="w-7 h-7 md:w-8 md:h-8 text-white group-hover:translate-x-1 transition-transform duration-300" 
-             fill="none" 
-             stroke="currentColor" 
-             viewBox="0 0 24 24" 
-             stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-        </svg>
-      </a>
+      {{-- Background image --}}
+      @if($pozadina)
+        <img src="{{ $pozadina['url'] }}" alt="{{ $pozadina['alt'] ?? 'Lipovačka Oaza' }}"
+             class="absolute inset-0 w-full h-full object-cover" />
+      @else
+        <img src="@asset('resources/images/hero-vila.webp')" alt="Lipovačka Oaza"
+             class="absolute inset-0 w-full h-full object-cover" />
+      @endif
+
+      <div class="absolute inset-0 bg-black/40"></div>
+
+      <div class="relative z-10 w-full max-w-3xl mx-auto px-6 py-16 md:py-20 text-center">
+
+        <p class="text-[#C9A96E] text-sm uppercase tracking-wider mb-3">
+          {{ $eyebrow }}
+        </p>
+
+        <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight font-manrope mb-5">
+          {{ $naslov }}
+        </h2>
+
+        <p class="text-white/90 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+          {{ $opis }}
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="{{ $dugme_1_link['url'] }}"
+             class="inline-flex items-center justify-center bg-white/80 hover:bg-white text-[#4F7052] px-8 py-4 rounded-[20px] font-bold text-base transition duration-300">
+            {{ $dugme_1_tekst }}
+          </a>
+          <a href="{{ $dugme_2_link['url'] }}"
+             class="inline-flex items-center justify-center border border-white/70 text-white hover:bg-white hover:text-[#4F7052] px-8 py-4 rounded-[20px] font-bold text-base transition duration-300">
+            {{ $dugme_2_tekst }}
+          </a>
+        </div>
+
+      </div>
 
     </div>
-    
+
   </div>
 </section>
