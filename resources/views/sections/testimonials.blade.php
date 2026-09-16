@@ -1,5 +1,5 @@
 {{-- Testimonials: guest reviews with sticky stacking cards effect --}}
-<section class="py-20 bg-white">
+<section class="bg-white">
   <div class="max-w-7xl mx-auto px-6">
 
     {{-- Section header --}}

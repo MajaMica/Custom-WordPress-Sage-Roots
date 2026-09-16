@@ -1,5 +1,4 @@
-<section class="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-gray-800">
-  {{-- Background image with fallback --}}
+<section class="hero-full relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-white">
   @if($pozadina)
     <img src="{{ $pozadina['url'] }}" alt="{{ $pozadina['alt'] ?? $naslov }}"
          class="absolute inset-0 w-full h-full object-cover z-0" />

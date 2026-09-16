@@ -2,3 +2,22 @@
 @source "../../app/**/*.php";
 @source "../**/*.blade.php";
 @source "../**/*.js";
+
+/* Global section padding */
+main > section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  main > section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Hero exception — no padding */
+main > section.hero-full {
+  padding-top: 0;
+  padding-bottom: 0;
+}

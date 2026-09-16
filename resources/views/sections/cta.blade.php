@@ -1,5 +1,5 @@
 {{-- CTA section: contact with background image --}}
-<section class="py-20 bg-white">
+<section class="bg-white">
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="relative rounded-[20px] overflow-hidden min-h-[474px] flex items-center justify-center">
