@@ -19,9 +19,9 @@
     @endif
 
     {{-- Book Now  --}}
-    <a href="/book-now" class="hidden md:inline-block bg-white/70 hover:bg-white text-[#4F7052] px-6 py-3 rounded-[20px] text-base font-bold transition-all duration-500" id="header-btn">
-      Book Now
-    </a>
+<a href="{{ home_url('/kontakt/') }}" class="hidden md:inline-block bg-white/70 hover:bg-white text-[#4F7052] px-6 py-3 rounded-[20px] text-base font-bold transition-all duration-500" id="header-btn">
+  Rezerviši
+</a>
 
     {{--  (hamburger) --}}
     <button class="md:hidden text-white text-2xl" aria-label="Open menu">

@@ -161,3 +161,12 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+/**
+ * Add body class for pages that should have capsule header immediately.
+ */
+add_filter('body_class', function ($classes) {
+    if (is_page(['galerija',  'o-nama'])) {
+        $classes[] = 'header-capsule';
+    }
+    return $classes;
+});

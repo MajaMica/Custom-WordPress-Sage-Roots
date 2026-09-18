@@ -1,0 +1,1 @@
+@include('sections.gallery-grid')
