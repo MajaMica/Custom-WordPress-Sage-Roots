@@ -32,3 +32,48 @@ body.header-capsule #header-container {
 body.header-capsule #site-header {
   padding-top: 1rem;
 }
+/* Mobile menu navigation links */
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobile-nav ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 14px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.mobile-nav ul li a::after {
+  content: '→';
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.2s ease;
+  font-size: 1.25rem;
+}
+
+.mobile-nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  padding-left: 1.5rem;
+}
+
+.mobile-nav ul li a:hover::after {
+  opacity: 0.8;
+  transform: translateX(0);
+}
+
+/* Active menu item */
+.mobile-nav ul li.current-menu-item a {
+  background-color: rgba(255, 255, 255, 0.15);
+}
