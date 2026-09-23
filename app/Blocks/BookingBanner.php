@@ -24,8 +24,7 @@ class BookingBanner extends Block
     {
         $block = Builder::make('booking-banner');
 
-        // Trenutno bez ACF polja — sav sadržaj je hardkodovan u Blade sekciji.
-        // Kad klijent zatraži da menja tekst kroz editor, otkomentarisi polja ispod.
+    
 
         // $block
         //     ->addText('eyebrow', ['label' => 'Mali tekst iznad naslova'])
