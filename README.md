@@ -1,156 +1,176 @@
-Lipovačka Oaza — Custom WordPress Theme
-A custom WordPress theme for a private luxury villa rental, built from a Figma design using Sage (Roots), Blade, Tailwind CSS v4, and Vite.
+# Lipovačka Oaza — Custom WordPress Theme
 
-🔗 Live site: https://lipovackaoaza.com/
-⚡ PageSpeed report: https://pagespeed.web.dev/analysis/https-lipovackaoaza-com/tfus47lknz?form_factor=mobile
+A custom WordPress theme for a private luxury villa rental, built from a Figma design using **Sage (Roots), Blade, Tailwind CSS v4, and Vite**.
 
-https://docs/pagespeed.png
+🔗 **Live site:** https://lipovackaoaza.com/
+⚡ **PageSpeed report:** https://pagespeed.web.dev/analysis/https-lipovackaoaza-com/tfus47lknz?form_factor=mobile
 
-100 / 99 PageSpeed Performance — desktop / mobile
+![PageSpeed report](docs/pagespeed.png)
 
-No caching plugin. No page builder. The performance comes primarily from the theme architecture, asset handling, image optimisation, and lean frontend implementation.
+> **100 / 99 PageSpeed Performance — desktop / mobile**
+>
+> No caching plugin. No page builder. The performance comes primarily from the theme architecture, asset handling, image optimisation, and lean frontend implementation.
 
-Overview
+---
+
+## Overview
+
 Lipovačka Oaza is a custom WordPress website for a private luxury villa rental.
 
-The project started from a Figma design and was implemented as a custom Sage theme rather than being built with a page builder.
+The project started from a **Figma design** and was implemented as a custom Sage theme rather than being built with a page builder.
 
 The main goals were:
 
-faithfully translate the Figma design into a production WordPress theme
+* faithfully translate the Figma design into a production WordPress theme
+* create reusable and editable content sections
+* keep the editing experience simple for the client
+* maintain a clean separation between PHP, Blade templates, and frontend assets
+* achieve strong Core Web Vitals without relying on a caching or optimisation plugin
 
-create reusable and editable content sections
+---
 
-keep the editing experience simple for the client
+## Results
 
-maintain a clean separation between PHP, Blade templates, and frontend assets
+Performance was verified on the live production website using **Google PageSpeed Insights**.
 
-achieve strong Core Web Vitals without relying on a caching or optimisation plugin
+| Device  | Performance |
+| ------- | ----------: |
+| Desktop |     **100** |
+| Mobile  |      **99** |
 
-Results
-Performance was verified on the live production website using Google PageSpeed Insights.
+### Mobile performance
 
-Device	Performance
-Desktop	100
-Mobile	99
-Mobile performance
-Tested using Moto G Power / Slow 4G throttling:
+Tested using **Moto G Power / Slow 4G throttling**:
 
-Metric	Result
-First Contentful Paint	1.1 s
-Largest Contentful Paint	2.3 s
-Total Blocking Time	0 ms
-Cumulative Layout Shift	0
-Speed Index	1.4 s
-Accessibility and SEO were not the primary optimisation targets for this build. The implementation prioritised performance, Core Web Vitals, and frontend efficiency.
+| Metric                   |    Result |
+| ------------------------ | --------: |
+| First Contentful Paint   | **1.1 s** |
+| Largest Contentful Paint | **2.3 s** |
+| Total Blocking Time      |  **0 ms** |
+| Cumulative Layout Shift  |     **0** |
+| Speed Index              | **1.4 s** |
 
-Key Features
-Figma → Custom WordPress Theme
+> Accessibility and SEO were not the primary optimisation targets for this build. The implementation prioritised **performance, Core Web Vitals, and frontend efficiency**.
+
+---
+
+## Key Features
+
+### Figma → Custom WordPress Theme
+
 The design was implemented from Figma as reusable Blade sections and components rather than being recreated with a page builder.
 
-Editable Custom Blocks
-Page sections are implemented as PHP block classes under app/Blocks.
+### Editable Custom Blocks
+
+Page sections are implemented as PHP block classes under `app/Blocks`.
 
 The client can edit content such as text and images directly from the WordPress editor while the block structure and field definitions remain version-controlled in Git.
 
-Built-in Fallbacks
+### Built-in Fallbacks
+
 Each block includes sensible fallback content.
 
 If an editable field is empty, the template can still render a complete section instead of producing a broken or empty layout.
 
 Content priority:
 
-Value entered by the client
-
-Fallback defined in the Blade template
-
-ACF/SCF default_value when applicable
+1. Value entered by the client
+2. Fallback defined in the Blade template
+3. ACF/SCF `default_value` when applicable
 
 Example:
 
-php
+```php
 public function with(): array
 {
     return [
         'title' => get_field('title') ?: 'Default title',
     ];
 }
-Responsive Hero
+```
+
+### Responsive Hero
+
 The hero section includes:
 
-responsive typography
+* responsive typography
+* gradient overlay
+* optimised hero imagery
+* responsive layout behaviour
 
-gradient overlay
+### Scroll-aware Header
 
-optimised hero imagery
-
-responsive layout behaviour
-
-Scroll-aware Header
 The header changes its appearance depending on scroll position:
 
-transparent over the hero
+* transparent over the hero
+* solid/translucent after scrolling
+* fixed capsule-style variant on selected pages
 
-solid/translucent after scrolling
+### Glassmorphism UI
 
-fixed capsule-style variant on selected pages
-
-Glassmorphism UI
 Subtle glassmorphism details are used for selected interface elements, including translucent surfaces, borders, and backdrop blur.
 
-Video Section
+### Video Section
+
 The video section uses:
 
-html
+```html
 poster
 preload="metadata"
+```
+
 to avoid unnecessarily loading the full video during the initial page load.
 
-Reservation Flow
-The site includes a reservation inquiry flow with a direct WhatsApp shortcut for contacting the property.
+### Reservation Flow
 
-No Page Builder
+The site includes a reservation inquiry flow with a direct **WhatsApp shortcut** for contacting the property.
+
+### No Page Builder
+
 All major sections are implemented directly in Blade and styled with Tailwind CSS.
 
-Performance Approach
+---
+
+## Performance Approach
+
 No caching plugin is used.
 
 Performance was approached at the theme and frontend level:
 
-images are served as WebP and resized to appropriate display dimensions
+* images are served as **WebP** and resized to appropriate display dimensions
+* Vite generates hashed production assets
+* generated assets can therefore be cached efficiently by the browser
+* Tailwind generates only the utilities used by the project
+* below-the-fold images use lazy loading
+* the primary hero image is loaded eagerly when appropriate
+* frontend JavaScript is kept lightweight
+* markup is rendered server-side through Blade
+* unnecessary plugins and page-builder layers are avoided
 
-Vite generates hashed production assets
+The goal was to make the website fast **by design**, rather than relying on a final optimisation layer to compensate for a heavy implementation.
 
-generated assets can therefore be cached efficiently by the browser
+---
 
-Tailwind generates only the utilities used by the project
+## Tech Stack
 
-below-the-fold images use lazy loading
+| Technology                     | Purpose                                       |
+| ------------------------------ | --------------------------------------------- |
+| **WordPress**                  | CMS                                           |
+| **Sage (Roots)**               | Theme architecture / starter                  |
+| **Laravel Blade**              | Templating                                    |
+| **Tailwind CSS v4**            | Styling                                       |
+| **Vite**                       | Asset bundling / development / HMR            |
+| **Acorn**                      | Laravel-style application layer for WordPress |
+| **ACF Composer**               | Code-based block architecture                 |
+| **Secure Custom Fields (SCF)** | Editable custom fields                        |
+| **Composer**                   | PHP dependencies                              |
+| **Yarn**                       | JavaScript dependencies                       |
 
-the primary hero image is loaded eagerly when appropriate
+---
 
-frontend JavaScript is kept lightweight
+## Why Secure Custom Fields (SCF)?
 
-markup is rendered server-side through Blade
-
-unnecessary plugins and page-builder layers are avoided
-
-The goal was to make the website fast by design, rather than relying on a final optimisation layer to compensate for a heavy implementation.
-
-Tech Stack
-Technology	Purpose
-WordPress	CMS
-Sage (Roots)	Theme architecture / starter
-Laravel Blade	Templating
-Tailwind CSS v4	Styling
-Vite	Asset bundling / development / HMR
-Acorn	Laravel-style application layer for WordPress
-ACF Composer	Code-based block architecture
-Secure Custom Fields (SCF)	Editable custom fields
-Composer	PHP dependencies
-Yarn	JavaScript dependencies
-Why Secure Custom Fields (SCF)?
-This project uses Secure Custom Fields (SCF) instead of ACF Pro.
+This project uses **Secure Custom Fields (SCF)** instead of ACF Pro.
 
 SCF is the free, WordPress-maintained fork of Advanced Custom Fields and provides a compatible API for the field functionality used by this project.
 
@@ -158,20 +178,20 @@ The project does not depend on ACF Pro-specific Repeater or Gallery fields.
 
 Where a repeater/gallery structure would normally be useful, content is handled through:
 
-individual fields
-
-multiple single-image fields
-
-Blade fallbacks
-
-static content where appropriate
+* individual fields
+* multiple single-image fields
+* Blade fallbacks
+* static content where appropriate
 
 This keeps the project compatible with the free field-management setup used for the client website.
 
-Block Architecture
+---
+
+## Block Architecture
+
 Each editable section follows a simple three-file structure:
 
-text
+```text
 app/
 └── Blocks/
     └── BookingBanner.php
@@ -183,29 +203,39 @@ resources/
     │
     └── sections/
         └── booking-banner.blade.php
-Responsibilities
-Block class
+```
 
-text
+### Responsibilities
+
+**Block class**
+
+```text
 app/Blocks/BookingBanner.php
+```
+
 Defines the block and its fields.
 
-Bridge template
+**Bridge template**
 
-text
+```text
 resources/views/blocks/booking-banner.blade.php
+```
+
 Connects the registered block with the corresponding section template.
 
-Section template
+**Section template**
 
-text
+```text
 resources/views/sections/booking-banner.blade.php
+```
+
 Contains the actual HTML structure and Tailwind classes.
 
 This keeps the block registration logic separate from the presentation layer.
 
-Content Flow
-text
+### Content Flow
+
+```text
 WordPress Editor
        ↓
      SCF
@@ -215,9 +245,11 @@ WordPress Editor
  Blade Section
        ↓
  Rendered HTML
+```
+
 When a field is empty:
 
-text
+```text
 Client value
      ↓
 if available → render it
@@ -225,10 +257,15 @@ if available → render it
 otherwise
      ↓
 Blade fallback
+```
+
 This allows the frontend to remain functional even when optional content has not been entered.
 
-Project Structure
-text
+---
+
+## Project Structure
+
+```text
 app/
 ├── Blocks/             # Custom block classes
 ├── setup.php           # Theme setup and filters
@@ -247,28 +284,32 @@ resources/
 
 public/
 └── build/              # Compiled Vite assets
-public/build/ contains generated production assets and is not committed to the repository.
+```
 
-Getting Started
-Requirements
-PHP 8.x
+> `public/build/` contains generated production assets and is not committed to the repository.
 
-Node.js 18+
+---
 
-Composer
+## Getting Started
 
-Yarn
+### Requirements
 
-Local WordPress installation
+* PHP 8.x
+* Node.js 18+
+* Composer
+* Yarn
+* Local WordPress installation
+* Secure Custom Fields (SCF)
 
-Secure Custom Fields (SCF)
+### Installation
 
-Installation
 Clone the theme into:
 
-text
+```text
 wp-content/themes/
-bash
+```
+
+```bash
 git clone https://github.com/MajaMica/Custom-WordPress-Sage-Roots.git
 
 cd Custom-WordPress-Sage-Roots
@@ -276,25 +317,35 @@ cd Custom-WordPress-Sage-Roots
 composer install
 
 yarn install
-Development
+```
+
+### Development
+
 Start the Vite development environment:
 
-bash
+```bash
 yarn dev
+```
+
 Build production assets:
 
-bash
+```bash
 yarn build
+```
+
 Then activate the theme from:
 
-WordPress → Appearance → Themes
+**WordPress → Appearance → Themes**
 
-Development Workflow
+---
+
+## Development Workflow
+
 The project uses Git for version control and Vite for the frontend development workflow.
 
 A typical development cycle is:
 
-text
+```text
 Figma
   ↓
 Blade / Tailwind implementation
@@ -308,41 +359,35 @@ Vite production build
 WordPress deployment
   ↓
 PageSpeed / Core Web Vitals verification
+```
+
 This keeps the design, theme code, editable content structure, and compiled frontend assets separated and maintainable.
 
-Project Highlights
-Custom WordPress theme built from a Figma design
+---
 
-Sage / Roots architecture
+## Project Highlights
 
-Blade-based component structure
+* Custom WordPress theme built from a Figma design
+* Sage / Roots architecture
+* Blade-based component structure
+* Tailwind CSS v4
+* Vite asset pipeline
+* Code-defined editable blocks
+* SCF-based WordPress editing experience
+* Responsive custom frontend
+* No page builder
+* No caching plugin
+* WebP image optimisation
+* **100 desktop / 99 mobile PageSpeed Performance**
+* **0 ms Total Blocking Time**
+* **0 CLS**
+* Production deployment and performance verification
 
-Tailwind CSS v4
+---
 
-Vite asset pipeline
+## License
 
-Code-defined editable blocks
-
-SCF-based WordPress editing experience
-
-Responsive custom frontend
-
-No page builder
-
-No caching plugin
-
-WebP image optimisation
-
-100 desktop / 99 mobile PageSpeed Performance
-
-0 ms Total Blocking Time
-
-0 CLS
-
-Production deployment and performance verification
-
-License
-This repository is intended primarily as a portfolio and technical demonstration.
+This repository is intended primarily as a **portfolio and technical demonstration**.
 
 The client website and its content remain the property of the respective client.
 
