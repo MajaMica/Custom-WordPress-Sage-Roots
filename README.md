@@ -50,8 +50,6 @@ Tested using **Moto G Power / Slow 4G throttling**:
 | Cumulative Layout Shift  |     **0** |
 | Speed Index              | **1.4 s** |
 
-> Accessibility and SEO were not the primary optimisation targets for this build. The implementation prioritised **performance, Core Web Vitals, and frontend efficiency**.
-
 ---
 
 ## Key Features
@@ -170,20 +168,7 @@ The goal was to make the website fast **by design**, rather than relying on a fi
 
 ## Why Secure Custom Fields (SCF)?
 
-This project uses **Secure Custom Fields (SCF)** instead of ACF Pro.
-
-SCF is the free, WordPress-maintained fork of Advanced Custom Fields and provides a compatible API for the field functionality used by this project.
-
-The project does not depend on ACF Pro-specific Repeater or Gallery fields.
-
-Where a repeater/gallery structure would normally be useful, content is handled through:
-
-* individual fields
-* multiple single-image fields
-* Blade fallbacks
-* static content where appropriate
-
-This keeps the project compatible with the free field-management setup used for the client website.
+SCF is the free, WordPress-maintained fork of Advanced Custom Fields and keeps the same `get_field()` API. This project uses it so the client gets an editable site without a paid license. This particular theme only needs simple text and image fields, so no Repeater or Gallery is used.
 
 ---
 
@@ -365,30 +350,6 @@ This keeps the design, theme code, editable content structure, and compiled fron
 
 ---
 
-## Project Highlights
-
-* Custom WordPress theme built from a Figma design
-* Sage / Roots architecture
-* Blade-based component structure
-* Tailwind CSS v4
-* Vite asset pipeline
-* Code-defined editable blocks
-* SCF-based WordPress editing experience
-* Responsive custom frontend
-* No page builder
-* No caching plugin
-* WebP image optimisation
-* **100 desktop / 99 mobile PageSpeed Performance**
-* **0 ms Total Blocking Time**
-* **0 CLS**
-* Production deployment and performance verification
-
----
-
 ## License
 
-This repository is intended primarily as a **portfolio and technical demonstration**.
-
-The client website and its content remain the property of the respective client.
-
-The code in this repository may contain project-specific implementation details and should not be reused as a production theme without reviewing and adapting it for the intended environment.
+Code is released under the MIT license. Client content (text, images, branding) is not included in that license and remains the property of the client.
